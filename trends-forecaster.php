@@ -39,11 +39,11 @@ function tf_get_hot_trends_atom_url ($country){
 function tf_show_ranking ($arg, $num){
   if (count ($arg) > 0){
     $items = array_slice ($arg, 0, $num);
-    echo '<ul>';
+    echo '<ol>';
     foreach ((array)$items as $tmp){
       echo '<li><a href="' . $tmp['link'] . '" target="_blank">' . $tmp['title'] . '</a></li>';
     }
-    echo '</ul>';
+    echo '</ol>';
   }
 }
 
@@ -105,11 +105,11 @@ class TrendsForecasterWidget extends WP_Widget{
     preg_match_all ('/<a [^>]*>([^<>]*)<\/a>/is', $rss2->items[0]['content']['encoded'], $out, PREG_PATTERN_ORDER);
 
     $out[1] = array_slice ($out[1], 0, $disp_num);
-    echo '<ul>';
+    echo '<ol>';
     foreach ((array)$out[1] as $tmp){
       echo '<li><a href="' . $local_url . $today . '/' . str_replace ('.', '~', $tmp) . '/' . '" target="_blank">' . $tmp . '</a></li>';
     }
-    echo '</ul>';
+    echo '</ol>';
 
     if ($forecaster != ''){
       echo '<li><a href="' .
@@ -219,7 +219,7 @@ class TrendsForecasterWidget extends WP_Widget{
          '" type="text" value="' .
          $forecaster .
          '" /><br /><small>';
-    printf (__("If you have Forecaster ID, you can see your ID at <a href=\"%saccount/\" target=\"_blank\">%saccount/.</a>",
+    printf (__("If you have Forecaster ID (not 'Google Account' !!), you can see your ID at <a href=\"%saccount/\" target=\"_blank\">%saccount/.</a>",
             'trends-forecaster'),
             $local_url,
             $local_url);
