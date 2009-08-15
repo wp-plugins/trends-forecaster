@@ -91,10 +91,12 @@ class TrendsForecasterWidget extends WP_Widget{
     if ($forecaster != ''){
       $rss = fetch_rss ($local_url . 'feeds/person/' . $forecaster . '/' . $today . '/');
 
-      list ($score, $rank, $extra) = split (',', $rss->channel['description'], 3);
-      list ($tmp, $score, $extra) = split (':', $score, 2);
-      list ($tmp, $rank, $extra) = split (':', $rank, 2);
-      echo __('My Score (Ranking)', 'trends-forecaster') . ': ' . $score . ' (' . $rank . ')';
+      if ($rss){
+        list ($score, $rank, $extra) = split (',', $rss->channel['description'], 3);
+        list ($tmp, $score, $extra) = split (':', $score, 2);
+        list ($tmp, $rank, $extra) = split (':', $rank, 2);
+        echo __('My Score (Ranking)', 'trends-forecaster') . ': ' . $score . ' (' . $rank . ')';
+      }
     }
 
     echo '<ul>';
@@ -111,7 +113,7 @@ class TrendsForecasterWidget extends WP_Widget{
     }
     echo '</ol>';
 
-    if ($forecaster != ''){
+    if ($forecaster != '' && $rss){
       echo '<li><a href="' .
            $local_url .
            'person/' .
@@ -124,7 +126,7 @@ class TrendsForecasterWidget extends WP_Widget{
     }
 
     echo '<li><a href="' . $local_url . $today . '/" target="_blank">';
-    if ($forecaster != ''){
+    if ($forecaster != '' && $rss){
       echo __('Public Forecasts', 'trends-forecaster');
     } else{
       echo __('Forecasts', 'trends-forecaster');
@@ -137,20 +139,23 @@ class TrendsForecasterWidget extends WP_Widget{
     echo '</ul><li>' . __('Tomorrow', 'trends-forecaster') . '</li><ul>';
 
     if ($forecaster != ''){
-      echo '<li><a href="' .
-           $local_url .
-           'person/' .
-           $forecaster .
-           '/" target="_blank">' .
-           __('My Forecasts', 'trends-forecaster') .
-           '</a></li>';
       $rss = fetch_rss ($local_url . 'feeds/person/' . $forecaster . '/' . $tomorrow . '/');
 
-      tf_show_ranking ($rss->items, $disp_num);
+      if ($rss){
+        echo '<li><a href="' .
+             $local_url .
+             'person/' .
+             $forecaster .
+             '/" target="_blank">' .
+             __('My Forecasts', 'trends-forecaster') .
+             '</a></li>';
+
+        tf_show_ranking ($rss->items, $disp_num);
+      }
     }
 
     echo '<li><a href="' . $local_url . $tomorrow . '/" target="_blank">';
-    if ($forecaster != ''){
+    if ($forecaster != '' && $rss){
       echo __('Public Forecasts', 'trends-forecaster');
     } else{
       echo __('Forecasts', 'trends-forecaster');
@@ -219,7 +224,7 @@ class TrendsForecasterWidget extends WP_Widget{
          '" type="text" value="' .
          $forecaster .
          '" /><br /><small>';
-    printf (__("If you have Forecaster ID (not 'Google Account' !!), you can see your ID at <a href=\"%saccount/\" target=\"_blank\">%saccount/.</a>",
+    printf (__("If you have Forecaster ID (not 'Google Account' !), you can see your ID at <a href=\"%saccount/\" target=\"_blank\">%saccount/.</a>",
             'trends-forecaster'),
             $local_url,
             $local_url);
