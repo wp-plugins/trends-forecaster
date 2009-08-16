@@ -4,7 +4,7 @@ Donate link:
 Tags: widget, google, hot, trend, game, ranking, forecaster
 Requires at least: 2.8
 Tested up to: 2.8.4
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 
 This widget shows current Google Trends, Trends Forecasts and Top Trends Forecasters.
 
@@ -36,5 +36,7 @@ Because Top Trends Forecasters are also displayed in this widget, so you might o
 1.0.1 Added and modified some minor matters about displaying message
 
 1.0.2 Added error handling
+
+1.0.3 Modified comments
 
 == Screenshots ==
