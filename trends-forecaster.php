@@ -4,7 +4,7 @@ Plugin Name: Trends Forecaster
 Plugin URI: http://trendsforecaster.appspot.com/
 Description: This widget shows current Google Trends, Trends Forecasts and Top Trends Forecasters.
 Author: SAKURAI Kenichi
-Version: 1.0.3
+Version: 1.0.4
 Author URI: http://something.cool.coocan.jp/kenichi/
 */
 
