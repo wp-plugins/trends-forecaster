@@ -1,10 +1,10 @@
 === Trends Forecaster ===
 Contributors: SAKURAI Kenichi
 Donate link:
-Tags: widget, google, hot, trend, game, ranking, forecaster
+Tags: widget, plugin, sidebar, google, hot, trend, game, ranking, forecaster
 Requires at least: 2.8
 Tested up to: 2.8.4
-Stable tag: 1.0.3
+Stable tag: 1.0.4
 
 This widget shows current Google Trends, Trends Forecasts and Top Trends Forecasters.
 
@@ -38,5 +38,7 @@ Because Top Trends Forecasters are also displayed in this widget, so you might o
 1.0.2 Added error handling
 
 1.0.3 Modified comments
+
+1.0.4 Some minor modifications and adjustments
 
 == Screenshots ==
